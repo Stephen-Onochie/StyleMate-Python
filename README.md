@@ -14,6 +14,9 @@ To build a proof of concept (POC) for StyleMate, this version was created to dem
 - Be able to input clothes as images, text, and keywords
     - Wiil just input images from pc and not photo app as POC
 - Use an aesthetic UI that may be simpler than mobile version of app
-
+- Simply reccoomend clothes based on temp. and clothing type
+    - If hot, where t-shirt
+    - if cold, where hoodie
+- For each clothiing item, include type, color, size, & attribute (comfort, style, etc)
 
 ## Project Graphics/Screenshots
