@@ -20,3 +20,8 @@ To build a proof of concept (POC) for StyleMate, this version was created to dem
 - For each clothiing item, include type, color, size, & attribute (comfort, style, etc)
 
 ## Project Graphics/Screenshots
+
+### App Design References
+![Reference 1 for App Design](Assets/References/Ref1.png)
+
+![Reference 2 for App Design](Assets/References/Ref2.webp)
