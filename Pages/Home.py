@@ -1,18 +1,15 @@
-import tkinter as tk
-from tkinter import ttk
-
-
-class Outfits:
+# Homepage Class
+class Home:
     def __init__(self):
         pass
 
-    # shows outfits page on screen
+    # draws homepage page on screen
     def draw(self):
         pass
 
 
 def main():
-    page = Outfits()
+    pass
 
 
 if __name__ == "__main__":
