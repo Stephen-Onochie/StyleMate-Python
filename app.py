@@ -1,6 +1,7 @@
 # Needed libraries
 import tkinter as tk
 from tkinter import ttk
+from Services import database as db
 
 # importing app pages
 from Pages import outfits
@@ -10,8 +11,8 @@ from Pages import weather
 from Pages import home
 
 
-def main():
+def app_loop():
     pass
 
 
-main()
+app_loop()
