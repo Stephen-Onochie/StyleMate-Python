@@ -15,13 +15,14 @@ To build a proof of concept (POC) for StyleMate, this version was created to dem
     - Wiil just input images from pc and not photo app as POC
 - Use an aesthetic UI that may be simpler than mobile version of app
 - Simply reccoomend clothes based on temp. and clothing type
-    - If hot, where t-shirt
-    - if cold, where hoodie
+    - If hot, wear t-shirt
+    - if cold, wear hoodie
 - For each clothiing item, include type, color, size, & attribute (comfort, style, etc)
 
 ## Project Graphics/Screenshots
 
-### App Design References
+### App Design Reference
 ![Reference 1 for App Design](Assets/References/Ref1.png)
 
-![Reference 2 for App Design](Assets/References/Ref2.webp)
+### App Development Process + Logos
+![Screenshot of App Dev. Process](Assets/Screenshots/appdev.png)
