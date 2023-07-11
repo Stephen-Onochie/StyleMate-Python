@@ -12,5 +12,5 @@ APIKEY = os.getenv('DATABASE_URL')
 
 cred_obj = firebase_admin.credentials.Certificate('....path to file')
 default_app = firebase_admin.initialize_app(cred_obj, {
-    'databaseURL': 'https://stylemate-2f1e9-default-rtdb.firebaseio.com/'
+    'databaseURL': APIKEY
 })
