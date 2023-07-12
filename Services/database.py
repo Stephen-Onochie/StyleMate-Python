@@ -6,7 +6,7 @@ import json
 # Reference => https://www.freecodecamp.org/news/how-to-get-started-with-firebase-using-python/
 
 # Fetch the service account key JSON file contents
-cred = credentials.Certificate('/Users/stephenonochie/Documents/GitHub/StyleMate-Python/key.json')
+cred = credentials.Certificate('/Users/stephenonochie/Documents/GitHub/StyleMate-Python/Assets/key.json')
 
 # Initialize the app with a service account, granting admin privileges
 firebase_admin.initialize_app(cred, {
@@ -31,6 +31,19 @@ def update():
     pass
 
 
+# adds a new user to the database
+def add_user(username, fullname, zipcode):
+    new_user_ref = ref.child('users').child(username)
+
+    new_user_ref.set({
+        'name': fullname,
+        'zipcode': str(zipcode),
+        'clothes': {},
+        'outfits': {}
+
+    })
+
+
 # added the desired value to the database
 # TODO Add code to send new data
 def push():
@@ -51,6 +64,7 @@ def delete():
 
 # testing code here
 def main():
+    reset()
     print(ref.get())
 
 
