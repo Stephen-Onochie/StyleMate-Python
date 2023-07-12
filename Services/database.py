@@ -3,7 +3,8 @@ from firebase_admin import credentials
 from firebase_admin import db
 import json
 
-# Reference => https://www.freecodecamp.org/news/how-to-get-started-with-firebase-using-python/
+# Reference 1 => https://www.freecodecamp.org/news/how-to-get-started-with-firebase-using-python/
+# Reference 2 => https://firebase.google.com/docs/database/admin/save-data
 
 # Fetch the service account key JSON file contents
 cred = credentials.Certificate('/Users/stephenonochie/Documents/GitHub/StyleMate-Python/Assets/key.json')
