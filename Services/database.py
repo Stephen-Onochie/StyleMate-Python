@@ -14,7 +14,7 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://stylemate-2f1e9-default-rtdb.firebaseio.com/'
 })
 
-# As an admin, the app has access to read and write all data, regradless of Security Rules
+# As an admin, the app has access to read and write all data, regardless of Security Rules
 ref = db.reference('/')
 
 
@@ -26,13 +26,8 @@ def reset():
     ref.set(file_contents)
 
 
-# updates a datapoint to desired value
-# TODO Add code to change a datapoint
-def update():
-    pass
-
-
 # adds a new user to the database
+# Done Add code to add a new user
 def add_user(username, fullname, zipcode):
     new_user_ref = ref.child('users').child(username)
 
@@ -45,21 +40,57 @@ def add_user(username, fullname, zipcode):
     })
 
 
-# added the desired value to the database
-# TODO Add code to send new data
-def push():
+# adds a clothing item to a user's wardrobe
+# TODO Add code to add a clothing item
+def add_clothing():
     pass
 
 
-# retrieves data from database
-# TODO Add Code to get data values
-def get():
+# adds an entire outfit to a user's wardrobe
+# TODO Add code to save desired clothing items as an outfit
+def add_outfit():
     pass
 
 
-# deletes a datapoint
-# TODO Add code to delete a datapoint
-def delete():
+# updates a user's zipcode
+# TODO Add code to change a user's zipcode
+def update_zipcode():
+    pass
+
+
+# updates a user's name
+# TODO Add code to change a user's name
+def update_name():
+    pass
+
+
+# updates a user's clothing item information
+# TODO Add code to change a clothing item info
+def update_clothing():
+    pass
+
+
+# updates a user's outfit / outfit info
+# TODO Add code to change an outfit or its information
+def update_outfit():
+    pass
+
+
+# deletes a user from the database
+# TODO Add code to delete a user
+def delete_user():
+    pass
+
+
+# deletes a clothing item from a user's wardrobe
+# TODO Add code to delete a clothing item
+def delete_clothing():
+    pass
+
+
+# deletes an outfit from a user's wardrobe
+# TODO Add code to delete an outfit
+def delete_outfit():
     pass
 
 
