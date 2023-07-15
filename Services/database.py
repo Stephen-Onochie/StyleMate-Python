@@ -72,8 +72,8 @@ def add_clothing(username, category, color, image):
     })
 
 
-# adds an entire outfit to a user's wardrobe
-# Done Add code to save desired clothing items as an outfit
+# added new outfit to a user's wardrobe
+# DONE Add code to save desired clothing items as an outfit
 def add_outfit(username, name, clothes_id):
     new_user_ref = ref.child('users').child(username).child('outfits').child(randomID())
     clothes = ''
@@ -97,10 +97,13 @@ def add_outfit(username, name, clothes_id):
 
 
 # updates a user's zipcode
-# TODO Add code to change a user's zipcode
-def update_zipcode():
-    pass
-
+# Done Add code to change a user's zipcode
+def update_zipcode(username, new_zipcode):
+    new_user_ref = ref.child('users').child(username)
+    new_user_ref.update({
+        'zipcode': new_zipcode
+    })
+    print('Zipcode Updated!')
 
 # updates a user's name
 # TODO Add code to change a user's name
@@ -140,8 +143,7 @@ def delete_outfit():
 
 # testing code here
 def main():
-    add_outfit('stephenO', 'newOutfit', 4620482648)
-
+    update_zipcode('js', 47865)
 
 # only runs testing code if program is directly run
 if __name__ == "__main__":
