@@ -118,7 +118,7 @@ def update_name(username, new_name):
 
 # updates a user's clothing item information
 # Done Add code to change a clothing item info
-def update_clothing(username, clothing_id=0, category=0, color=0, image=0):
+def update_clothing(username, clothing_id, category=0, color=0, image=0):
     new_user_ref = ref.child('users').child(username).child('clothes').child(str(clothing_id))
     new_category = ''
     new_color = ''
@@ -139,8 +139,8 @@ def update_clothing(username, clothing_id=0, category=0, color=0, image=0):
     if image != 0:
         new_image = image
         new_user_ref.update({
-        'image': new_image
-    })
+            'image': new_image
+        })
 
     new_user_ref.update({
         'timestamp': timestamp_format()
@@ -151,10 +151,34 @@ def update_clothing(username, clothing_id=0, category=0, color=0, image=0):
 
 
 # updates a user's outfit / outfit info
-# TODO Add code to change an outfit or its information
-def update_outfit():
-    pass
+# Done Add code to change an outfit or its information
+def update_outfit(username, outfit_id, clothes_id=0, name=0):
+    new_user_ref = ref.child('users').child(username).child('outfits').child(str(outfit_id))
+    new_clothes = ''
+    new_name = ''
 
+    if clothes_id != 0:
+        # search of last clothing_id key
+        clothes_found = new_user_ref.child('clothes').get()
+        new_key = len(clothes_found)
+        print(new_key)
+        # set new key as last key + 1
+        new_user_ref.child('clothes').update({
+            new_key: clothes_id
+        })
+
+    if name != 0:
+        new_name = name
+        new_user_ref.update({
+            'name': new_name
+        })
+
+    new_user_ref.update({
+        'timestamp': timestamp_format()
+    })
+
+    print('Outfit Created!')
+    print(timestamp_format())
 
 # deletes a user from the database
 # TODO Add code to delete a user
@@ -176,8 +200,7 @@ def delete_outfit():
 
 # testing code here
 def main():
-    update_clothing('stephenO', 370212076, 0, 'Blue', '12345')
-
+    update_outfit('stephenO', '234452667', '1120293747657',0)
 
 # only runs testing code if program is directly run
 if __name__ == "__main__":
