@@ -73,40 +73,27 @@ def add_clothing(username, category, color, image):
 
 
 # adds an entire outfit to a user's wardrobe
-# TODO Add code to save desired clothing items as an outfit
+# Done Add code to save desired clothing items as an outfit
 def add_outfit(username, name, clothes_id):
     new_user_ref = ref.child('users').child(username).child('outfits').child(randomID())
     clothes = ''
-    # searches for clothing item object/s
-    clothes_found =  ref.child('users').child(username).child('clothes').get()
+
+    # searches & saves clothing item object
+    clothes_found = ref.child('users').child(username).child('clothes').get()
     clothes_ids = list(clothes_found.keys())
     for key in clothes_ids:
         if key == str(clothes_id):
-            clothes = clothes_found[key]
-            print(clothes)
+            # use clothes_found[key] to access clothes item data
+            clothes = key
             break
-    # for item in clothes_found:
-    #     print('---------')
-    #     print('Clothing Item:')
-    #     print(clothes_found[item])
-    #     print('---------')
-    #
-    #     if clothes_found[item] == str(clothes_id):
-    #         print("Found 'em!")
-    #         clothes = clothes_found[0]
-    #         break
-    #     else:
-    #         print("Sorry! Couldn't find it!")
 
-    # save object/s as variable
     # adds object/s to new outfit
-
-    # new_user_ref.set({
-    #     'clothes': {clothes},
-    #     'name': name,
-    #     'timestamp': timestamp_format()
-    # })
-    # return 'Outfit Created', clothesdic
+    new_user_ref.set({
+        'clothes': {0: clothes},
+        'name': name,
+        'timestamp': timestamp_format()
+    })
+    print('Outfit Created')
 
 
 # updates a user's zipcode
@@ -154,6 +141,7 @@ def delete_outfit():
 # testing code here
 def main():
     add_outfit('stephenO', 'newOutfit', 4620482648)
+
 
 # only runs testing code if program is directly run
 if __name__ == "__main__":
