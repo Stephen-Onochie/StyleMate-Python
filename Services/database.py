@@ -107,7 +107,7 @@ def update_zipcode(username, new_zipcode):
 
 
 # updates a user's name
-# TODO Add code to change a user's name
+# Done Add code to change a user's name
 def update_name(username, new_name):
     new_user_ref = ref.child('users').child(username)
     new_user_ref.update({
@@ -117,9 +117,37 @@ def update_name(username, new_name):
 
 
 # updates a user's clothing item information
-# TODO Add code to change a clothing item info
-def update_clothing():
-    pass
+# Done Add code to change a clothing item info
+def update_clothing(username, clothing_id=0, category=0, color=0, image=0):
+    new_user_ref = ref.child('users').child(username).child('clothes').child(str(clothing_id))
+    new_category = ''
+    new_color = ''
+    new_image = ''
+
+    if category != 0:
+        new_category = category
+        new_user_ref.update({
+            'category': new_category
+        })
+
+    if color != 0:
+        new_color = color
+        new_user_ref.update({
+            'color': new_color
+        })
+
+    if image != 0:
+        new_image = image
+        new_user_ref.update({
+        'image': new_image
+    })
+
+    new_user_ref.update({
+        'timestamp': timestamp_format()
+    })
+
+    print('Clothing Updated!')
+    print(timestamp_format())
 
 
 # updates a user's outfit / outfit info
@@ -148,6 +176,8 @@ def delete_outfit():
 
 # testing code here
 def main():
+    update_clothing('stephenO', 370212076, 0, 'Blue', '12345')
+
 
 # only runs testing code if program is directly run
 if __name__ == "__main__":
