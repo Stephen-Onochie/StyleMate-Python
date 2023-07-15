@@ -105,10 +105,15 @@ def update_zipcode(username, new_zipcode):
     })
     print('Zipcode Updated!')
 
+
 # updates a user's name
 # TODO Add code to change a user's name
-def update_name():
-    pass
+def update_name(username, new_name):
+    new_user_ref = ref.child('users').child(username)
+    new_user_ref.update({
+        'name': str(new_name)
+    })
+    print('Name Updated!')
 
 
 # updates a user's clothing item information
@@ -143,7 +148,6 @@ def delete_outfit():
 
 # testing code here
 def main():
-    update_zipcode('js', 47865)
 
 # only runs testing code if program is directly run
 if __name__ == "__main__":
