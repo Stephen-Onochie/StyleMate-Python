@@ -196,16 +196,17 @@ def delete_clothing(username, clothing_id):
     print('Clothing Deleted!')
 
 
-
 # deletes an outfit from a user's wardrobe
-# TODO Add code to delete an outfit
-def delete_outfit():
-    pass
+# Done Add code to delete an outfit
+def delete_outfit(username, outfit_id):
+    new_user_ref = ref.child('users').child(username).child('outfits').child(str(outfit_id))
+    new_user_ref.delete()
+    print('Outfit Deleted!')
 
 
 # testing code here
 def main():
-    delete_clothing('johnS', 726836440)
+    
 
 
 # only runs testing code if program is directly run
