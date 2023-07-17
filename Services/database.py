@@ -48,14 +48,13 @@ def reset():
 # Done Add code to add a new user
 def add_user(username, fullname, zipcode):
     new_user_ref = ref.child('users').child(username)
-
     new_user_ref.set({
         'name': fullname,
         'zipcode': str(zipcode),
-        'clothes': {''},
-        'outfits': {''}
-
+        'clothes': {},
+        'outfits': {}
     })
+    print('User Added!')
 
 
 # adds a clothing item to a user's wardrobe
@@ -63,13 +62,13 @@ def add_user(username, fullname, zipcode):
 # TODO Add code to shorten image link if too long
 def add_clothing(username, category, color, image):
     new_user_ref = ref.child('users').child(username).child('clothes').child(randomID())
-
     new_user_ref.set({
         'category': category,
         'color': color,
         'image': image,
-        'timestamp': datetime.datetime.now().timestamp()
+        'timestamp': timestamp_format()
     })
+    print('Clothing Added!')
 
 
 # added new outfit to a user's wardrobe
@@ -93,7 +92,7 @@ def add_outfit(username, name, clothes_id):
         'name': name,
         'timestamp': timestamp_format()
     })
-    print('Outfit Created')
+    print('Outfit Created!')
 
 
 # updates a user's zipcode
@@ -180,10 +179,13 @@ def update_outfit(username, outfit_id, clothes_id=0, name=0):
     print('Outfit Created!')
     print(timestamp_format())
 
+
 # deletes a user from the database
-# TODO Add code to delete a user
-def delete_user():
-    pass
+# Done Add code to delete a user
+def delete_user(username):
+    new_user_ref = ref.child('users').child(username)
+    new_user_ref.delete()
+    print('User Deleted!')
 
 
 # deletes a clothing item from a user's wardrobe
@@ -200,7 +202,7 @@ def delete_outfit():
 
 # testing code here
 def main():
-    update_outfit('stephenO', '234452667', '1120293747657',0)
+    delete_user('janeS')
 
 # only runs testing code if program is directly run
 if __name__ == "__main__":
