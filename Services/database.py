@@ -189,9 +189,12 @@ def delete_user(username):
 
 
 # deletes a clothing item from a user's wardrobe
-# TODO Add code to delete a clothing item
-def delete_clothing():
-    pass
+# Done Add code to delete a clothing item
+def delete_clothing(username, clothing_id):
+    new_user_ref = ref.child('users').child(username).child('clothes').child(str(clothing_id))
+    new_user_ref.delete()
+    print('Clothing Deleted!')
+
 
 
 # deletes an outfit from a user's wardrobe
@@ -202,7 +205,8 @@ def delete_outfit():
 
 # testing code here
 def main():
-    delete_user('janeS')
+    delete_clothing('johnS', 726836440)
+
 
 # only runs testing code if program is directly run
 if __name__ == "__main__":
