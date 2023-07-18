@@ -1,11 +1,9 @@
-# Homepage Class
-class Home:
-    def __init__(self):
-        pass
+import tkinter
+from tkinter import ttk
 
-    # draws homepage page on screen
-    def draw(self):
-        pass
+
+def draw():
+    pass
 
 
 def main():

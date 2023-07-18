@@ -206,7 +206,7 @@ def delete_outfit(username, outfit_id):
 
 # testing code here
 def main():
-    
+    pass
 
 
 # only runs testing code if program is directly run
