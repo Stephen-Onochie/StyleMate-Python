@@ -1,4 +1,5 @@
 import http.client
+import json
 
 conn = http.client.HTTPSConnection("weatherapi-com.p.rapidapi.com")
 
@@ -9,37 +10,67 @@ headers = {
 
 
 # gets current temperature (f) in a given zipcode area
+# Done Add code to get current temp of zipcode
 def get_current_temp(zipcode):
-    pass
+    request = f"/current.json?q={str(zipcode)}"
+    conn.request("GET", request, headers=headers)
+
+    res = conn.getresponse()
+    data = res.read().decode("utf-8")
+
+    weather_data = json.loads(data)
+    current_temp = weather_data['current']['temp_f']
+    return current_temp
 
 
 # gets current wind speed (mph) in a given zipcode area
+# Done Add code to get current wind speed with zipcde
 def get_current_wind(zipcode):
-    pass
+    request = f"/current.json?q={str(zipcode)}"
+    conn.request("GET", request, headers=headers)
+
+    res = conn.getresponse()
+    data = res.read().decode("utf-8")
+
+    weather_data = json.loads(data)
+    wind_speed = weather_data['current']['wind_mph']
+    return wind_speed
 
 
 # gets current humidity (%) in a given zipcode area
+# Done Add code to get current humidity with zipcode
 def get_current_humidity(zipcode):
-    pass
+    request = f"/current.json?q={str(zipcode)}"
+    conn.request("GET", request, headers=headers)
+
+    res = conn.getresponse()
+    data = res.read().decode("utf-8")
+    weather_data = json.loads(data)
+    humidity = weather_data['current']['humidity']
+    return humidity
 
 
 # gets current uv index in a given zipcode area
+# Done Add code to get current uv index with zipcode
 def get_current_uv_index(zipcode):
-    pass
+    request = f"/current.json?q={str(zipcode)}"
+    conn.request("GET", request, headers=headers)
+
+    res = conn.getresponse()
+    data = res.read().decode("utf-8")
+    weather_data = json.loads(data)
+    uv_index = weather_data['current']['uv']
+    return uv_index
 
 
 # gets temp forecast for next 10 days and returns as a list
+# TODO Add code to get 10 day forecast in a list with zipcode
 def get_forecast(zipcode):
     pass
 
 
 def main():
-    conn.request("GET", "/current.json?q=46231", headers=headers)
-
-    res = conn.getresponse()
-    data = res.read()
-
-    print(data.decode("utf-8"))
+    pass
 
 
 if __name__ == '__main__':
