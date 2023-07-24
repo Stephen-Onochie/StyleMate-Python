@@ -202,6 +202,12 @@ def get_zipcode(username):
     return zipcode
 
 
+def get_name(username):
+    new_user_ref = ref.child('users').child(username).child('name')
+    name = new_user_ref.get()
+    return name
+
+
 # testing code here
 def main():
     pass
