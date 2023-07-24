@@ -44,7 +44,6 @@ def reset():
     ref.set(file_contents)
 
 
-# adds a new user to the database
 # Done Add code to add a new user
 def add_user(username, fullname, zipcode):
     new_user_ref = ref.child('users').child(username)
@@ -57,7 +56,6 @@ def add_user(username, fullname, zipcode):
     print('User Added!')
 
 
-# adds a clothing item to a user's wardrobe
 # Done Add code to add a clothing item
 # TODO Add code to shorten image link if too long
 def add_clothing(username, category, color, image):
@@ -71,7 +69,6 @@ def add_clothing(username, category, color, image):
     print('Clothing Added!')
 
 
-# added new outfit to a user's wardrobe
 # DONE Add code to save desired clothing items as an outfit
 def add_outfit(username, name, clothes_id):
     new_user_ref = ref.child('users').child(username).child('outfits').child(randomID())
@@ -95,7 +92,6 @@ def add_outfit(username, name, clothes_id):
     print('Outfit Created!')
 
 
-# updates a user's zipcode
 # Done Add code to change a user's zipcode
 def update_zipcode(username, new_zipcode):
     new_user_ref = ref.child('users').child(username)
@@ -105,7 +101,6 @@ def update_zipcode(username, new_zipcode):
     print('Zipcode Updated!')
 
 
-# updates a user's name
 # Done Add code to change a user's name
 def update_name(username, new_name):
     new_user_ref = ref.child('users').child(username)
@@ -115,7 +110,6 @@ def update_name(username, new_name):
     print('Name Updated!')
 
 
-# updates a user's clothing item information
 # Done Add code to change a clothing item info
 def update_clothing(username, clothing_id, category=0, color=0, image=0):
     new_user_ref = ref.child('users').child(username).child('clothes').child(str(clothing_id))
@@ -149,7 +143,6 @@ def update_clothing(username, clothing_id, category=0, color=0, image=0):
     print(timestamp_format())
 
 
-# updates a user's outfit / outfit info
 # Done Add code to change an outfit or its information
 def update_outfit(username, outfit_id, clothes_id=0, name=0):
     new_user_ref = ref.child('users').child(username).child('outfits').child(str(outfit_id))
@@ -188,7 +181,6 @@ def delete_user(username):
     print('User Deleted!')
 
 
-# deletes a clothing item from a user's wardrobe
 # Done Add code to delete a clothing item
 def delete_clothing(username, clothing_id):
     new_user_ref = ref.child('users').child(username).child('clothes').child(str(clothing_id))
@@ -196,12 +188,18 @@ def delete_clothing(username, clothing_id):
     print('Clothing Deleted!')
 
 
-# deletes an outfit from a user's wardrobe
 # Done Add code to delete an outfit
 def delete_outfit(username, outfit_id):
     new_user_ref = ref.child('users').child(username).child('outfits').child(str(outfit_id))
     new_user_ref.delete()
     print('Outfit Deleted!')
+
+
+# Done Add code to get zipcode of a user
+def get_zipcode(username):
+    new_user_ref = ref.child('users').child(username).child('zipcode')
+    zipcode = new_user_ref.get()
+    return zipcode
 
 
 # testing code here
