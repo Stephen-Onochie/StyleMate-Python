@@ -63,10 +63,22 @@ def get_current_uv_index(zipcode):
     return uv_index
 
 
-# gets temp forecast for next 10 days and returns as a list
-# TODO Add code to get 10 day forecast in a list with zipcode
+# gets temp forecast for next 3 days and returns as a list
+# Done Add code to get 3 day forecast in a list with zipcode
 def get_forecast(zipcode):
-    pass
+    forecast_list = []
+    request = f"/forecast.json?q={str(zipcode)}&days=3"
+    conn.request("GET", request, headers=headers)
+
+    res = conn.getresponse()
+    data = res.read().decode("utf-8")
+    weather_data = json.loads(data)
+
+    for day in range(3):
+        temp = weather_data['forecast']['forecastday'][day]['day']["avgtemp_f"]
+        forecast_list.append(temp)
+
+    return forecast_list
 
 
 def main():
