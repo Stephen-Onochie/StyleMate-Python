@@ -1,19 +1,16 @@
 import tkinter as tk
-from tkinter import ttk
 
 
-class Settings:
-    def __init__(self):
-        pass
+class SettingsPage(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.master = master
+        tk.Label(self, text="StyleMate - Settings").pack(pady=10)
+        # tk.Button(self, text="Go to [] Page", command=self.goto_weather).pack()
 
-    # shows settings page on screen
-    def draw(self):
-        pass
+    def show(self):
+        self.pack(fill='both', expand=True)
 
-
-def main():
-    pass
-
-
-if __name__ == "__main__":
-    main()
+    def goto_(self):
+        self.pack_forget()  # Hide the current page
+        # self.master.weather_page.show()

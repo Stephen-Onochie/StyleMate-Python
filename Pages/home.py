@@ -1,16 +1,16 @@
-import tkinter
-from tkinter import ttk
-from Services import database as db
-from Services import weatherAPI as weather
+import tkinter as tk
 
 
-def draw():
-    pass
+class HomePage(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.master = master
+        tk.Label(self, text="StyleMate - Home").pack(pady=10)
+        # tk.Button(self, text="Go to [] Page", command=self.goto_weather).pack()
 
+    def show(self):
+        self.pack(fill='both', expand=True)
 
-def main():
-    pass
-
-
-if __name__ == "__main__":
-    main()
+    def goto_(self):
+        self.pack_forget()  # Hide the current page
+        # self.master.weather_page.show()
