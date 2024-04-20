@@ -1,39 +1,47 @@
-import tkinter as tk
 from PIL import Image, ImageTk
-import tkinter.font as tkFont
-
-# # variables
-# root = tk.Tk()
-# root.title("undefined")
-#
-# # setting window size
-# width = 350
-# height = 600
-# screenwidth = root.winfo_screenwidth()
-# screenheight = root.winfo_screenheight()
-# alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
-# root.geometry(alignstr)
-# root.resizable(width=False, height=False)
-#
-# # Load and display an image
-# # (replace 'your_logo.png' with the path to your image file)
-# image = Image.open(r'F:\steph\Documents\Github\StyleMate-Python\Assets\Screen_Images\StyleMate_Loading_Background.png')
-# image = ImageTk.PhotoImage(image)
-#
-# # Create a label to display the image
-# image_label = tk.Label(root, image=image)
-# image_label.pack()
+import tkinter as tk
 
 
 class LoadingPage(tk.Frame):
     def __init__(self, master):
-        super().__init__(self, master)
+        super().__init__(master)
         self.master = master
-        tk.Label(self, text="App Loading").pack(pady=100)
+        self.load_background()
+
+    def load_background(self):
+        # Load and display the background image
+        bg_image = Image.open('Assets/Screen_Images/StyleMate_Loading_Background.png')  # Adjust the path to your image
+        bg_photo = ImageTk.PhotoImage(bg_image)
+
+        # Make sure the canvas size matches the image size exactly
+        self.canvas = tk.Canvas(self, width=bg_photo.width(), height=bg_photo.height())
+        self.canvas.pack(fill="both", expand=True)
+
+        self.canvas.create_image(0, 0, image=bg_photo, anchor="nw", tags="bg_img")
+
+        # Keep a reference to avoid garbage collection
+        self.bg_photo = bg_photo
+
+        # Create a text item
+        self.loading_text = self.canvas.create_text(275, 700, text="Loading", fill="#225A76",
+                                                    font=('Helvetica', 35, 'bold'))
+
+    def animate_loading(self):
+        # Get the current text
+        current_text = self.canvas.itemcget(self.loading_text, "text")
+
+        # Update the text to simulate animation
+        if current_text.endswith("..."):
+            self.canvas.itemconfig(self.loading_text, text="Loading")
+        else:
+            self.canvas.itemconfig(self.loading_text, text=current_text + ".")
+
+        # Schedule this method to be called again after 500ms
+        self.after(500, self.animate_loading)
 
     def show(self):
         self.pack(fill="both", expand=True)
+        self.animate_loading()  # Start the animation
 
-
-if __name__ == "__main__":
-    pass
+    def close(self):
+        self.pack_forget()
