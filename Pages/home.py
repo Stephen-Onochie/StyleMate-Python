@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 
-
 class HomePage(tk.Frame):
     def __init__(self, master):
         super().__init__(master, bg="#A7E7F6")
@@ -27,7 +26,33 @@ class HomePage(tk.Frame):
         self.canvas.create_text(210, 150, text="Welcome, Stephen", fill="#225A76",
                                 font=('Helvetica', 30, 'bold'))
 
-        self.canvas.create_rectangle((20, 200), (500, 450))  # uses two points
+        self.canvas.create_rectangle((20, 200), (500, 450),fill="#225A76")  # uses two points
+
+
+    def round_rectangle(self,x1, y1, x2, y2, radius=25, **kwargs):
+
+        points = [x1 + radius, y1,
+                  x1 + radius, y1,
+                  x2 - radius, y1,
+                  x2 - radius, y1,
+                  x2, y1,
+                  x2, y1 + radius,
+                  x2, y1 + radius,
+                  x2, y2 - radius,
+                  x2, y2 - radius,
+                  x2, y2,
+                  x2 - radius, y2,
+                  x2 - radius, y2,
+                  x1 + radius, y2,
+                  x1 + radius, y2,
+                  x1, y2,
+                  x1, y2 - radius,
+                  x1, y2 - radius,
+                  x1, y1 + radius,
+                  x1, y1 + radius,
+                  x1, y1]
+
+        return self.canvas.create_polygon(points, **kwargs, smooth=True)
 
     def on_canvas_configure(self, event):
         # Set the scroll region to encompass the canvas
@@ -36,9 +61,17 @@ class HomePage(tk.Frame):
     def show(self):
         self.pack(fill='both', expand=True)
 
-    def goto_(self):
+    def goto_(self, page):
         self.pack_forget()  # Hide the current page
-        # self.master.weather_page.show()
+        match page:
+            case "Outfits":
+                pass
+            case "Settings":
+                pass
+            case "Wardrobe":
+                pass
+            case "Weather":
+                pass
 
 
 if __name__ == "__main__":
