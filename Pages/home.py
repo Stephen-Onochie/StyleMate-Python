@@ -23,10 +23,11 @@ class HomePage(tk.Frame):
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
         self.canvas.bind('<Configure>', self.on_canvas_configure)
 
-        # Add content to the canvas
-        self.canvas.create_text(275, 1900, text="Welcome, Stephen", fill="#225A76",
-                                font=('Helvetica', 35, 'bold'))
-        self.canvas.create_line(0, 0, 2000, 5000, fill='green', width=10)
+        # ******Page Content******
+        self.canvas.create_text(210, 150, text="Welcome, Stephen", fill="#225A76",
+                                font=('Helvetica', 30, 'bold'))
+
+        self.canvas.create_rectangle((20, 200), (500, 450))  # uses two points
 
     def on_canvas_configure(self, event):
         # Set the scroll region to encompass the canvas

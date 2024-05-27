@@ -1,4 +1,4 @@
-# pip install tkinter
+# pip install tk
 # pip install pillow
 import tkinter as tk
 
